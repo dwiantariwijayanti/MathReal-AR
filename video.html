@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathReal-AR | Galeri Video Pembelajaran</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-[#f8fafc] flex flex-col min-h-screen">
+
+    <!-- Premium Sticky Navbar -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-3">
+                    <div class="bg-indigo-600 p-2 rounded-xl shadow-lg shadow-indigo-200">
+                        <i data-lucide="graduation-cap" class="text-white w-5 h-5"></i>
+                    </div>
+                                    <span class="text-2xl font-black text-gray-900 tracking-tight nav-brand">MathReal-AR</span>
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-bold">
+                    <a href="index.html" class="text-gray-500 hover:text-indigo-600 transition-all">Modul</a>
+                    <a href="flipbook.html" class="text-gray-500 hover:text-indigo-600 transition-all">Flipbook</a>
+                    <a href="video.html" class="text-indigo-600 relative after:content-[''] after:absolute after:-bottom-5 after:left-0 after:w-full after:h-1 after:bg-indigo-600 after:rounded-full">Video</a>
+                    <a href="download.html" class="text-gray-500 hover:text-indigo-600 transition-all">Unduhan</a>
+                </div>
+                <!-- Mobile Logo only -->
+                <div class="md:hidden flex items-center">
+                    <div class="bg-indigo-50 text-indigo-600 px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest border border-indigo-100 italic">V3.0</div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="p-2 text-gray-500 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Mobile Sidebar Menu Overlay -->
+    <div id="mobileSidebar" class="fixed inset-0 z-[100] transform translate-x-full invisible transition-transform duration-500 md:hidden">
+        <!-- Backdrop -->
+        <div id="sidebarBackdrop" class="absolute inset-0 bg-gray-900/40 backdrop-blur-sm opacity-0 transition-opacity duration-500"></div>
+        
+        <!-- Sidebar Content -->
+        <div class="absolute inset-y-0 right-0 w-80 bg-white shadow-2xl flex flex-col">
+            <div class="p-6 flex justify-between items-center border-b border-gray-100">
+                <div class="flex items-center gap-3">
+                    <div class="bg-indigo-600 p-2 rounded-xl">
+                        <i data-lucide="graduation-cap" class="text-white w-4 h-4"></i>
+                    </div>
+                    <span class="text-xl font-black text-gray-900 tracking-tight">Main Menu</span>
+                </div>
+                <button id="closeMenuBtn" class="p-2 text-gray-400 hover:text-gray-900 hover:bg-gray-100 rounded-lg">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            
+            <div class="flex-grow py-8 px-6 space-y-2">
+                <a href="index.html" class="flex items-center gap-4 p-4 rounded-2xl text-gray-500 hover:bg-gray-50 hover:text-indigo-600 transition-all font-bold">
+                    <i data-lucide="layout-grid" class="w-5 h-5"></i>
+                    <span>Modul Pembelajaran</span>
+                </a>
+                <a href="flipbook.html" class="flex items-center gap-4 p-4 rounded-2xl text-gray-500 hover:bg-gray-50 hover:text-indigo-600 transition-all font-bold">
+                    <i data-lucide="book-open" class="w-5 h-5"></i>
+                    <span>Cinema Flipbook</span>
+                </a>
+                <a href="video.html" class="flex items-center gap-4 p-4 rounded-2xl bg-indigo-50 text-indigo-600 font-bold">
+                    <i data-lucide="play-circle" class="w-5 h-5"></i>
+                    <span>Galeri Video AR</span>
+                </a>
+                <a href="download.html" class="flex items-center gap-4 p-4 rounded-2xl text-gray-500 hover:bg-gray-50 hover:text-indigo-600 transition-all font-bold">
+                    <i data-lucide="download-cloud" class="w-5 h-5"></i>
+                    <span>Pusat Unduhan</span>
+                </a>
+            </div>
+
+            <div class="p-8 border-t border-gray-50 border-dotted">
+                <div class="bg-indigo-50 rounded-2xl p-4 text-center">
+                    <p class="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-1">Status</p>
+                    <p class="text-xs text-indigo-700 font-black">MathReal-AR Poster Video Mode</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content: Poster Mode Layout -->
+    <main class="flex-grow flex flex-col lg:flex-row gap-8 max-w-[1600px] mx-auto w-full p-4 lg:p-10">
+        
+        <!-- Main Area -->
+        <div class="flex-grow space-y-6">
+            <!-- Video Poster Link (Fix for Error 153) -->
+            <a id="mainVideoLink" href="https://www.youtube.com/watch?v=1b5CNZNBbXM" target="_blank" 
+               class="block relative bg-gray-900 rounded-[2.5rem] overflow-hidden shadow-2xl aspect-video group border-4 border-white transition-all hover:shadow-indigo-200/50">
+                
+                <!-- Poster Image -->
+                <div id="videoPoster" class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" 
+                     style="background-image: url('https://img.youtube.com/vi/1b5CNZNBbXM/maxresdefault.jpg');"></div>
+                
+                <!-- Overlay Gradients -->
+                <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent"></div>
+                <div class="absolute inset-0 bg-indigo-900/10 group-hover:bg-transparent transition-colors"></div>
+
+                <!-- Play Button Center -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-20 h-20 md:w-28 md:h-28 bg-indigo-600 rounded-full flex items-center justify-center shadow-2xl transform transition-all group-hover:scale-125 group-hover:bg-indigo-500 group-active:scale-95 active:shadow-inner">
+                        <i data-lucide="play" class="text-white w-10 h-10 md:w-14 md:h-14 fill-white ml-2"></i>
+                    </div>
+                </div>
+
+                <!-- Badges -->
+                <div class="absolute top-6 right-6 flex flex-col items-end gap-2 text-right">
+                    <span class="bg-indigo-600 text-white text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-widest shadow-xl border border-indigo-400">Tonton di YouTube</span>
+                    <span class="bg-black/50 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1.5 rounded-lg border border-white/20">Klik untuk memutar</span>
+                </div>
+
+                <!-- Fake Player Bar (Aesthetic) -->
+                <div class="absolute bottom-6 inset-x-8 flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div class="flex-grow h-1.5 bg-white/20 rounded-full overflow-hidden">
+                        <div class="w-1/3 h-full bg-indigo-500 rounded-full"></div>
+                    </div>
+                    <span class="text-[10px] text-white font-bold font-mono">15:30</span>
+                </div>
+            </a>
+            
+            <!-- Video Info Area -->
+            <div class="bg-white p-8 rounded-[2.5rem] shadow-xl shadow-indigo-100/20 border border-gray-50 transition-all">
+                <div class="flex flex-col md:flex-row justify-between items-start gap-6">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2">
+                            <span class="bg-indigo-50 text-indigo-700 text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider border border-indigo-100">Video Edukasi</span>
+                            <span id="videoCategory" class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Matematika Dasar</span>
+                        </div>
+                        <h1 id="videoTitle" class="text-3xl font-black text-gray-900 leading-tight">Peluang Empirik</h1>
+                        <p class="text-gray-400 text-sm flex items-center gap-2 font-medium">
+                            <i data-lucide="verified" class="w-4 h-4 text-indigo-500"></i> MathReal-AR Academy Professional Series
+                        </p>
+                    </div>
+                    
+                    <div class="flex gap-3 w-full md:w-auto">
+                        <a id="btnTontonMain" href="https://www.youtube.com/watch?v=1b5CNZNBbXM" target="_blank" 
+                           class="flex-1 md:flex-none bg-indigo-600 hover:bg-gray-900 text-white px-10 py-5 rounded-2xl font-bold transition-all shadow-xl shadow-indigo-100 flex items-center justify-center gap-3 active:scale-95">
+                            <i data-lucide="youtube" class="w-6 h-6"></i>
+                            Tonton Sekarang
+                        </a>
+                        <button class="p-5 bg-gray-50 text-gray-400 hover:bg-indigo-50 hover:text-indigo-600 rounded-2xl transition-all border border-gray-100">
+                            <i data-lucide="share-2" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar: Playlist -->
+        <aside class="w-full lg:w-[420px]">
+            <div class="bg-white rounded-[2.5rem] shadow-xl shadow-indigo-100/20 border border-gray-50 overflow-hidden flex flex-col sticky top-28">
+                <div class="p-6 border-b border-gray-50 flex justify-between items-center bg-gray-50/20">
+                    <div>
+                        <h2 class="text-xl font-black text-gray-900 flex items-center gap-3">
+                            <i data-lucide="list-video" class="text-indigo-600 w-6 h-6"></i>
+                            Materi Terkait
+                        </h2>
+                        <p class="text-[10px] text-gray-400 font-bold mt-1 uppercase tracking-widest">Pilih materi untuk dipelajari</p>
+                    </div>
+                    <span class="bg-indigo-600 text-white text-[10px] font-bold px-3 py-1.5 rounded-xl">11 Video</span>
+                </div>
+                
+                <div class="p-4 space-y-3 overflow-y-auto max-h-[calc(100vh-320px)] custom-scrollbar" id="playlistContainer">
+                    <!-- Playlist generated by JS -->
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="bg-white border-t border-gray-100 py-10 mt-10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-[10px] font-black text-gray-300 uppercase tracking-widest">© 2024 MathReal-AR Dashboard • Video Poster Mode v3.0</p>
+        </div>
+    </footer>
+
+    <style>
+        .active-playlist {
+            background: linear-gradient(to right, #f5f3ff, #ede9fe);
+            border-color: #ddd6fe;
+        }
+        .active-playlist h4 { color: #4f46e5; }
+        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+    </style>
+
+    <script>
+        const videos = [
+            { id: '1b5CNZNBbXM', title: 'Peluang Empirik' },
+            { id: 'zXISJECf8pc', title: 'Frekuensi Harapan' },
+            { id: 'GHYlmIqkCP0', title: 'Bangun Ruang Kubus' },
+            { id: '5ipDf1GHc7A', title: 'Unsur-Unsur Lingkaran' },
+            { id: 'vhJCe2nlUdU', title: 'Sudut Pusat & Keliling' },
+            { id: 'O-TQUSZ6rHU', title: 'Peluang & Sampel' },
+            { id: '5LMDSDn2IUg', title: 'Bangun Ruang Prisma' },
+            { id: '6-sl9AEX1zo', title: 'Luas Lingkaran' },
+            { id: 'syWehZDE-h0', title: 'Bangun Ruang Limas' },
+            { id: 'jcilHjOcyOs', title: 'Keliling Lingkaran' },
+            { id: 'fwk37Nyc7hI', title: 'Bangun Ruang Balok' }
+        ];
+
+        function renderPlaylist() {
+            const container = document.getElementById('playlistContainer');
+            container.innerHTML = videos.map((v, i) => `
+                <button onclick="changeVideo('${v.id}', '${v.title}')" 
+                        class="playlist-item w-full flex gap-4 text-left p-3 rounded-2xl hover:bg-gray-50 transition-all border border-transparent ${i === 0 ? 'active-playlist' : ''}">
+                    <div class="w-28 aspect-video flex-shrink-0 rounded-xl overflow-hidden shadow-sm relative group/thumb">
+                        <img src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/30 group-hover/thumb:bg-black/0 transition-all flex items-center justify-center">
+                            <i data-lucide="play" class="text-white w-5 h-5 fill-white"></i>
+                        </div>
+                    </div>
+                    <div class="flex-grow py-1">
+                        <h4 class="text-xs font-bold text-gray-800 line-clamp-2 leading-tight">${v.title}</h4>
+                        <div class="flex items-center gap-2 mt-2">
+                             <span class="text-[8px] text-gray-400 font-black uppercase tracking-widest">Matematika</span>
+                        </div>
+                    </div>
+                </button>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function changeVideo(id, title) {
+            const poster = document.getElementById('videoPoster');
+            const titleEl = document.getElementById('videoTitle');
+            const mainLink = document.getElementById('mainVideoLink');
+            const btnTontonMain = document.getElementById('btnTontonMain');
+            
+            // Update UI (Poster Mode - bypass iframe error)
+            poster.style.backgroundImage = `url('https://img.youtube.com/vi/${id}/maxresdefault.jpg')`;
+            
+            // Fallback if maxres is missing
+            const img = new Image();
+            img.src = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+            img.onload = () => {
+                if(img.width <= 120) { // YouTube default fallback is 120px wide
+                    poster.style.backgroundImage = `url('https://img.youtube.com/vi/${id}/hqdefault.jpg')`;
+                }
+            };
+            
+            titleEl.textContent = title;
+            mainLink.href = `https://www.youtube.com/watch?v=${id}`;
+            btnTontonMain.href = `https://www.youtube.com/watch?v=${id}`;
+
+            // Update active states
+            document.querySelectorAll('.playlist-item').forEach(item => {
+                item.classList.remove('active-playlist');
+                if (item.getAttribute('onclick').includes(id)) {
+                    item.classList.add('active-playlist');
+                }
+            });
+            
+            // Notification or Feedback
+            console.log(`Switched to: ${title}`);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.onload = renderPlaylist;
+        lucide.createIcons();
+    </script>
+    <!-- Mobile Bottom Navigation -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-t border-gray-100 px-6 py-3 flex justify-between items-center z-[100] shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+        <a href="index.html" class="flex flex-col items-center gap-1 text-gray-400">
+            <i data-lucide="layout-grid" class="w-5 h-5"></i>
+            <span class="text-[10px] font-bold">Modul</span>
+        </a>
+        <a href="flipbook.html" class="flex flex-col items-center gap-1 text-gray-400">
+            <i data-lucide="book-open" class="w-5 h-5"></i>
+            <span class="text-[10px] font-bold">Flipbook</span>
+        </a>
+        <a href="video.html" class="flex flex-col items-center gap-1 text-indigo-600">
+            <i data-lucide="play-circle" class="w-5 h-5"></i>
+            <span class="text-[10px] font-bold">Video</span>
+        </a>
+        <a href="download.html" class="flex flex-col items-center gap-1 text-gray-400">
+            <i data-lucide="download-cloud" class="w-5 h-5"></i>
+            <span class="text-[10px] font-bold">Unduh</span>
+        </a>
+    </div>
+</body>
+
+</html>

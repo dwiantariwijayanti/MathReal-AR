@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathReal-AR | Koleksi Modul Pembelajaran</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-[#f8fafc] flex flex-col min-h-screen">
+
+    <!-- Premium Sticky Navbar -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-3">
+                    <div class="bg-indigo-600 p-2 rounded-xl shadow-lg shadow-indigo-200">
+                        <i data-lucide="graduation-cap" class="text-white w-5 h-5"></i>
+                    </div>
+                    <span class="text-2xl font-black text-gray-900 tracking-tight nav-brand">MathReal-AR</span>
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-bold">
+                    <a href="index.html" class="text-indigo-600 relative after:content-[''] after:absolute after:-bottom-5 after:left-0 after:w-full after:h-1 after:bg-indigo-600 after:rounded-full">Modul</a>
+                    <a href="flipbook.html" class="text-gray-500 hover:text-indigo-600 transition-all">Flipbook</a>
+                    <a href="video.html" class="text-gray-500 hover:text-indigo-600 transition-all">Video</a>
+                    <a href="download.html" class="text-gray-500 hover:text-indigo-600 transition-all">Unduhan</a>
+                </div>
+                <!-- Mobile Logo only -->
+                <div class="md:hidden flex items-center">
+                    <div class="bg-indigo-50 text-indigo-600 px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest border border-indigo-100 italic">V3.0</div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="p-2 text-gray-500 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Mobile Sidebar Menu Overlay -->
+    <div id="mobileSidebar" class="fixed inset-0 z-[100] transform translate-x-full invisible transition-transform duration-500 md:hidden">
+        <!-- Backdrop -->
+        <div id="sidebarBackdrop" class="absolute inset-0 bg-gray-900/40 backdrop-blur-sm opacity-0 transition-opacity duration-500"></div>
+        
+        <!-- Sidebar Content -->
+        <div class="absolute inset-y-0 right-0 w-80 bg-white shadow-2xl flex flex-col">
+            <div class="p-6 flex justify-between items-center border-b border-gray-100">
+                <div class="flex items-center gap-3">
+                    <div class="bg-indigo-600 p-2 rounded-xl">
+                        <i data-lucide="graduation-cap" class="text-white w-4 h-4"></i>
+                    </div>
+                    <span class="text-xl font-black text-gray-900 tracking-tight">Main Menu</span>
+                </div>
+                <button id="closeMenuBtn" class="p-2 text-gray-400 hover:text-gray-900 hover:bg-gray-100 rounded-lg">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            
+            <div class="flex-grow py-8 px-6 space-y-2">
+                <a href="index.html" class="flex items-center gap-4 p-4 rounded-2xl bg-indigo-50 text-indigo-600 font-bold">
+                    <i data-lucide="layout-grid" class="w-5 h-5"></i>
+                    <span>Modul Pembelajaran</span>
+                </a>
+                <a href="flipbook.html" class="flex items-center gap-4 p-4 rounded-2xl text-gray-500 hover:bg-gray-50 hover:text-indigo-600 transition-all font-bold">
+                    <i data-lucide="book-open" class="w-5 h-5"></i>
+                    <span>Cinema Flipbook</span>
+                </a>
+                <a href="video.html" class="flex items-center gap-4 p-4 rounded-2xl text-gray-500 hover:bg-gray-50 hover:text-indigo-600 transition-all font-bold">
+                    <i data-lucide="play-circle" class="w-5 h-5"></i>
+                    <span>Galeri Video AR</span>
+                </a>
+                <a href="download.html" class="flex items-center gap-4 p-4 rounded-2xl text-gray-500 hover:bg-gray-50 hover:text-indigo-600 transition-all font-bold">
+                    <i data-lucide="download-cloud" class="w-5 h-5"></i>
+                    <span>Pusat Unduhan</span>
+                </a>
+            </div>
+
+            <div class="p-8 border-t border-gray-50">
+                <div class="bg-gray-50 rounded-2xl p-4">
+                    <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 text-center">Identity</p>
+                    <p class="text-sm text-gray-600 font-bold text-center">MathReal-AR Platform</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dynamic Hero Section -->
+    <header class="bg-white overflow-hidden relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-indigo-50/50 to-white -z-10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center relative">
+            <div class="inline-block bg-indigo-50 text-indigo-700 px-5 py-2 rounded-2xl text-xs font-black uppercase tracking-widest mb-6">
+                Platform Pembelajaran Terpadu
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black text-gray-900 mb-6 leading-tight tracking-tight px-4">
+                Dashboard <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-400">MathReal-AR</span>
+            </h1>
+            <p class="text-base md:text-xl text-gray-500 max-w-3xl mx-auto font-medium leading-relaxed px-6">
+                Kelola potensi diri dengan akses ke modul interaktif berkualitas tinggi, pengalaman flipbook yang nyata, dan pustaka video pembelajaran terlengkap.
+            </p>
+        </div>
+    </header>
+
+    <!-- Module Grid Section -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div class="space-y-1">
+                <h2 class="text-3xl font-black text-gray-900 tracking-tight">Katalog Modul</h2>
+                <div class="h-1.5 w-20 bg-indigo-600 rounded-full"></div>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="flex -space-x-3 overflow-hidden py-1">
+                    <img class="inline-block h-8 w-8 md:h-12 md:w-12 rounded-lg md:rounded-xl object-cover ring-2 md:ring-4 ring-white shadow-lg" src="cover_brsd.jpg" alt="Cover 1">
+                    <img class="inline-block h-8 w-8 md:h-12 md:w-12 rounded-lg md:rounded-xl object-cover ring-2 md:ring-4 ring-white shadow-lg" src="cover_lingkaran.jpg" alt="Cover 2">
+                    <img class="inline-block h-8 w-8 md:h-12 md:w-12 rounded-lg md:rounded-xl object-cover ring-2 md:ring-4 ring-white shadow-lg" src="cover_peluang.jpg" alt="Cover 3">
+                </div>
+                <span class="text-[10px] md:text-sm font-black text-indigo-600 bg-indigo-50 px-3 md:px-4 py-1.5 md:py-2 rounded-xl md:rounded-2xl whitespace-nowrap">8 Modul Aktif</span>
+            </div>
+        </div>
+
+        <!-- Premium Module Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Module Item Template -->
+            <script>
+                const modules = [
+                    { id: '1', title: 'Buku Panduan Penggunaan FGAR', category: 'Panduan', driveId: '18bsCo23MsfNMQIBL6qyNIW9EBWH3FQgI', img: 'cover_fgar.jpg' },
+                    { id: '2', title: 'MathReal-AR MODEL', category: 'Geometry', driveId: '1EabyDC8_8k4inbkflTFl3oUx3x21mJz-', img: 'cover_mathreal.jpg' },
+                    { id: '3', title: 'Modul Guru Bangun Ruang Sisi Datar', category: 'Guru', driveId: '1jC14Au6YF8keTSlmLpZSQX__FJRZC1QF', img: 'cover_brsd.jpg' },
+                    { id: '4', title: 'Modul Siswa Bangun Ruang Sisi Datar', category: 'Siswa', driveId: '13DMzB7trNSO_MvF7scKtZgVAdHftxGr7', img: 'cover_brsd.jpg' },
+                    { id: '5', title: 'Modul Guru Lingkaran', category: 'Guru', driveId: '1w0xVqo5ZtL_U6BevAz1yeqZRsRs_eo8q', img: 'cover_lingkaran.jpg' },
+                    { id: '6', title: 'Modul Siswa Lingkaran', category: 'Siswa', driveId: '1MLCouYB16qMtmlaBiBkPoo99rdXpzqDY', img: 'cover_lingkaran.jpg' },
+                    { id: '7', title: 'Modul Guru Peluang', category: 'Guru', driveId: '1qo7vtX3zRqNn3k1xvH0e2l-VRvcD0yCA', img: 'cover_peluang.jpg' },
+                    { id: '8', title: 'Modul Siswa Peluang', category: 'Siswa', driveId: '1gJhZMDpOn-SfLox8BNPR1X4LtvdyEe5r', img: 'cover_peluang.jpg' }
+                ];
+
+                document.write(modules.map(m => `
+                    <div class="module-card group bg-white rounded-[2rem] overflow-hidden shadow-xl shadow-indigo-100/20 border border-gray-100 flex flex-col h-full hover:shadow-2xl transition-all duration-500">
+                        <div class="relative overflow-hidden aspect-[4/3]">
+                            <img src="${m.img}" alt="${m.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                                <span class="text-white text-xs font-bold flex items-center gap-2">
+                                    <i data-lucide="zoom-in" class="w-4 h-4"></i> Preview Tersedia
+                                </span>
+                            </div>
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-indigo-600 text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest shadow-sm">
+                                ${m.category}
+                            </span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-lg font-black text-gray-900 line-clamp-2 leading-snug mb-6 h-14 group-hover:text-indigo-600 transition-colors">
+                                ${m.title}
+                            </h3>
+                            <button onclick="openModal('https://drive.google.com/file/d/${m.driveId}/preview')" 
+                                    class="mt-auto w-full bg-gray-900 group-hover:bg-indigo-600 text-white font-bold py-4 px-4 rounded-2xl transition-all flex items-center justify-center gap-3 active:scale-95">
+                                <i data-lucide="book-open-check" class="w-5 h-5"></i>
+                                Buka Modul
+                            </button>
+                        </div>
+                    </div>
+                `).join(''));
+            </script>
+        </div>
+    </main>
+
+    <!-- Advanced Modal for PDF Preview -->
+    <div id="pdfModal" class="hidden fixed inset-0 z-[60] flex items-center justify-center modal-overlay p-4 lg:p-10">
+        <div class="bg-white w-full max-w-6xl h-full rounded-[3rem] overflow-hidden shadow-2xl relative animate-fade-in flex flex-col border-8 border-white">
+            <!-- Modal Header -->
+            <div class="px-8 py-6 border-b flex justify-between items-center bg-gray-50/50">
+                <div class="flex items-center gap-4">
+                    <div class="bg-indigo-600 p-2.5 rounded-2xl">
+                        <i data-lucide="file-text" class="text-white w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-black text-gray-900 leading-none">Dokumen Modul</h3>
+                        <p class="text-xs text-gray-400 mt-1 font-bold uppercase tracking-widest">Interactive Preview</p>
+                    </div>
+                </div>
+                <button id="closeModal" class="p-3 bg-white hover:bg-rose-50 hover:text-rose-600 text-gray-400 rounded-2xl transition-all shadow-sm active:scale-90 border border-gray-100">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <!-- Iframe Container -->
+            <div class="flex-grow bg-gray-100 relative group">
+                <!-- Loading Indicator -->
+                <div id="modalLoading" class="absolute inset-0 flex flex-col items-center justify-center bg-white z-0">
+                    <div class="relative flex h-12 w-12 items-center justify-center">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-20"></span>
+                        <div class="animate-spin rounded-full h-10 w-10 border-4 border-indigo-600 border-t-transparent"></div>
+                    </div>
+                    <p class="mt-4 text-xs font-black text-indigo-600 uppercase tracking-widest animate-pulse">Menyiapkan Pratinjau...</p>
+                </div>
+                <!-- The Iframe -->
+                <iframe id="pdfIframe" src="" class="w-full h-full relative z-10 opacity-0 transition-opacity duration-500" frameborder="0" onload="hideModalLoading()"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Helper Script -->
+    <script>
+        function hideModalLoading() {
+            const loader = document.getElementById('modalLoading');
+            const iframe = document.getElementById('pdfIframe');
+            if (iframe.src !== "" && iframe.src !== window.location.href) {
+                iframe.classList.remove('opacity-0');
+                iframe.classList.add('opacity-100');
+                if (loader) loader.classList.add('hidden');
+            }
+        }
+    </script>
+
+    <!-- Minimalist Footer -->
+    <footer class="bg-white border-t border-gray-100 py-12 pb-24 md:pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="bg-indigo-600 p-1.5 rounded-lg">
+                    <i data-lucide="graduation-cap" class="text-white w-4 h-4"></i>
+                </div>
+                <span class="text-xl font-black text-indigo-600 tracking-tight">MathReal-AR</span>
+            </div>
+            <p class="text-gray-400 text-sm font-medium">
+                &copy; 2024 MathReal-AR Platform. Menciptakan Ekosistem Belajar Tanpa Batas.
+            </p>
+            <div class="flex gap-4">
+                <a href="#" class="text-gray-300 hover:text-indigo-600 transition-colors"><i data-lucide="instagram"></i></a>
+                <a href="#" class="text-gray-300 hover:text-indigo-600 transition-colors"><i data-lucide="github"></i></a>
+                <a href="#" class="text-gray-300 hover:text-indigo-600 transition-colors"><i data-lucide="twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-t border-gray-100 px-6 py-3 flex justify-between items-center z-[100] shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+        <a href="index.html" class="flex flex-col items-center gap-1 text-indigo-600">
+            <i data-lucide="layout-grid" class="w-5 h-5"></i>
+            <span class="text-[10px] font-bold">Modul</span>
+        </a>
+        <a href="flipbook.html" class="flex flex-col items-center gap-1 text-gray-400">
+            <i data-lucide="book-open" class="w-5 h-5"></i>
+            <span class="text-[10px] font-bold">Flipbook</span>
+        </a>
+        <a href="video.html" class="flex flex-col items-center gap-1 text-gray-400">
+            <i data-lucide="play-circle" class="w-5 h-5"></i>
+            <span class="text-[10px] font-bold">Video</span>
+        </a>
+        <a href="download.html" class="flex flex-col items-center gap-1 text-gray-400">
+            <i data-lucide="download-cloud" class="w-5 h-5"></i>
+            <span class="text-[10px] font-bold">Unduh</span>
+        </a>
+    </div>
+
+    <!-- Main JS -->
+    <script src="main.js"></script>
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
